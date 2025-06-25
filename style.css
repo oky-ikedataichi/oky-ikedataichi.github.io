@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* スクロールバーを非表示にする */
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* ビューポートの高さに合わせる */
+    background-color: #f0f0f0;
+}
+
+#pano {
+    width: 100vw; /* 画面の幅いっぱいに広げる */
+    height: 100vh; /* 画面の高さいっぱいに広げる */
+    position: absolute; /* 他の要素の上に重ねるため */
+    top: 0;
+    left: 0;
+    z-index: 1; /* マップやUIの下に配置 */
+}
+
+#map {
+    position: absolute; /* ストリートビューの上に重ねる */
+    bottom: 5%; /* 右下からの距離 */
+    right: 4%; /* 右下からの距離 */
+    width: 30%; /* マップの幅 */
+    height: 40%; /* マップの高さ */
+    background-color: #eee;
+    border: 3px solid #fff; /* 白い枠線 */
+    border-radius: 8px; /* 角を丸くする */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* 影 */
+    z-index: 10; /* 最前面に表示 */
+}
+
+.ui-container {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20; /* 最前面に表示 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.3); /* 半透明の背景 */
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    margin: 0;
+    color: #333;
+    font-size: 28px;
+}
+
+.instructions {
+    margin: 5px 0 10px 0;
+    font-size: 15px;
+    color: #555;
+    text-align: center;
+    max-width: 600px;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 17px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#result {
+    margin-top: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    min-height: 30px;
+    text-align: center;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+    .ui-container {
+        width: 90%;
+        padding: 10px 15px;
+        top: 10px;
+    }
+    h1 {
+        font-size: 22px;
+    }
+    .instructions {
+        font-size: 13px;
+    }
+    .controls {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    button {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 15px;
+    }
+    #map {
+        width: 280px;
+        height: 200px;
+        bottom: 10px;
+        right: 10px;
+        border-width: 2px;
+    }
+    #result {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    #map {
+        width: 200px;
+        height: 150px;
+    }
+}
